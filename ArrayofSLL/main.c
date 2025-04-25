@@ -24,7 +24,7 @@ int main(){
         scanf("%d", &selector);
         switch (selector) {
             case 1:
-                printf("Ingin tambah dikota mana?\n1.Bandung\n2.Jakarta\n3.Solo\n4.Yogya\n5.Semarang\n...");
+                printf("Ingin tambah dikota mana?\n0.Bandung\n1.Jakarta\n2.Solo\n3.Yogya\n4.Semarang\n...");
                 scanf("%d",&locIndex);
 
                 printf("Masukkan Nama: ");
@@ -40,7 +40,7 @@ int main(){
                 free(locNama);
                 break;
             case 2:
-                printf("Ingin hapus dikota mana? ");
+                printf("Ingin hapus dikota mana?\n0.Bandung\n1.Jakarta\n2.Solo\n3.Yogya\n4.Semarang\n...");
                 scanf("%d",&locIndex);
                 printf("Masukkan Nama: ");
                 scanf("%s",name);
@@ -54,7 +54,7 @@ int main(){
                 deleteName (&K[locIndex], locNama, locIndex);
                 break;
             case 3:
-                printf("Ingin hapus dikota mana? ");
+                printf("Ingin hapus dikota mana?\n0.Bandung\n1.Jakarta\n2.Solo\n3.Yogya\n4.Semarang\n...");
                 scanf("%d",&locIndex);
                 deleteKota (&K[locIndex], locIndex);
                 printf("Tekan ENTER!\n");
