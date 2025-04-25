@@ -35,13 +35,13 @@ void insertCity(City** head, char* city) {
         tail->next = newCity;
         newCity->prev = tail;
     }
-    printf("City '%s' has been added.\n", city);
+    printf("\nCity '%s' has been added.\n", city);
 }
 
 void deleteCity(City** head, char* city) {
     City* search = findCity(*head, city);
     if (!search) {
-        printf("City '%s' has not been found.\n", city);
+        printf("\nCity '%s' has not been found.\n", city);
         return;
     }
 
@@ -55,7 +55,7 @@ void deleteCity(City** head, char* city) {
 
     freeNameList(search->p);
     free(search);
-    printf("City '%s' and all its names have been deleted.\n", city);
+    printf("\nCity '%s' and all its names have been deleted.\n", city);
 }
 
 City* findCity(City* head, char* city) {
@@ -70,7 +70,7 @@ City* findCity(City* head, char* city) {
 void addName(City* head, char* city, char* name) {
     City* c = findCity(head, city);
     if (!c) {
-        printf("City '%s' has not been found.\n", city);
+        printf("\nCity '%s' has not been found.\n", city);
         return;
     }
 
@@ -78,13 +78,13 @@ void addName(City* head, char* city, char* name) {
     strcpy(newNode->nm, name);
     newNode->q = c->p;
     c->p = newNode;
-    printf("Name '%s' has been added to the city '%s'.\n", name, city);
+    printf("\nName '%s' has been added to the city '%s'.\n", name, city);
 }
 
 void deleteName(City* head, char* city, char* name) {
     City* c = findCity(head, city);
     if (!c) {
-        printf("City '%s' has not been found.\n", city);
+        printf("\nCity '%s' has not been found.\n", city);
         return;
     }
 
@@ -95,7 +95,7 @@ void deleteName(City* head, char* city, char* name) {
     }
 
     if (!curr) {
-        printf("Name '%s' not been found in the city '%s'.\n", name, city);
+        printf("\nName '%s' not been found in the city '%s'.\n", name, city);
         return;
     }
 
@@ -105,7 +105,7 @@ void deleteName(City* head, char* city, char* name) {
         prev->q = curr->q;
 
     free(curr);
-    printf("Name '%s' has been deleted from the city '%s'.\n", name, city);
+    printf("\nName '%s' has been deleted from the city '%s'.\n", name, city);
 }
 
 void displayAllCities(City* head) {
