@@ -12,19 +12,19 @@ int main(){
 	Kota K[5];
 
     // InitKota
-    initKota (&K[0], "Bandung", 0);
-    initKota (&K[1], "Jakarta", 1);
-    initKota (&K[2], "Solo", 2);
-    initKota (&K[3], "Yogya", 3);
-    initKota (&K[4], "Semarang", 4);
+    initKota (&K[0], "Bandung");
+    initKota (&K[1], "Jakarta");
+    initKota (&K[2], "Solo");
+    initKota (&K[3], "Yogya");
+    initKota (&K[4], "Semarang");
 
     for (;;){
         system("cls");
-        printf("1. Tambah Nama\n2. Hapus Nama\n3. Hapus Kota\n4. Print Semua\nPilih->");
+        printf("1. Tambah Nama\n2. Hapus Nama\n3. Hapus Kota\n4. Print Semua\n5. Exit\nPilih->");
         scanf("%d", &selector);
         switch (selector) {
             case 1:
-                printf("Ingin tambah dikota mana? ");
+                printf("Ingin tambah dikota mana?\n1.Bandung\n2.Jakarta\n3.Solo\n4.Yogya\n5.Semarang\n...");
                 scanf("%d",&locIndex);
 
                 printf("Masukkan Nama: ");
@@ -37,6 +37,7 @@ int main(){
                 }
                 strcpy(locNama, name);
                 insertWarga (&K[locIndex], locNama, locIndex);
+                free(locNama);
                 break;
             case 2:
                 printf("Ingin hapus dikota mana? ");
@@ -56,11 +57,18 @@ int main(){
                 printf("Ingin hapus dikota mana? ");
                 scanf("%d",&locIndex);
                 deleteKota (&K[locIndex], locIndex);
+                printf("Tekan ENTER!\n");
+                getchar(); getchar();
                 break;
             case 4:
+                printAllKota(K);
+                printf("Tekan ENTER!\n");
+                getchar(); getchar();
+                break;
+            case 5:
                 break;
         }
-        if (selector == 4) {
+        if (selector == 5) {
             break;
         }
     }
