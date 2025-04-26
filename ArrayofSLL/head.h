@@ -19,7 +19,7 @@ typedef struct Warga {
 
 // Komponen dasar linked list
 
-void initKota (Kota * K, infotype namaKota, int index);
+void initKota (Kota * K, infotype namaKota);
 
 bool isEmpty (const Kota  *K, int index);
 
@@ -28,6 +28,8 @@ void deleteName (Kota * K, infotype namaWarga, int index);
 void insertWarga (Kota * K, infotype namaWarga, int index);
 
 void deleteKota (Kota * K, int index);
+
+void printAllKota (Kota * K);
 
 #endif
 

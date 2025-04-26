@@ -4,10 +4,18 @@
 #include <string.h>
 #include "head.h"
 
-void initKota (Kota * K, infotype namaKota, int index) {
-    K[index].next = NULL;
-    K[index].kt = namaKota;
+
+void initKota(Kota *K, infotype namaKota) {
+    K->kt = (char *)malloc(strlen(namaKota) + 1);
+    if (K->kt == NULL) {
+        printf("Gagal alokasi nama kota!\n");
+        exit(1);
+        }
+    strcpy(K->kt, namaKota);
+    K->next = NULL;
 }
+
+
 
 bool isEmpty (const Kota  *K, int index) {
     return K[index].next == NULL;
@@ -45,9 +53,18 @@ void deleteName(Kota *K, infotype namaWarga, int index) {
 
 
 void insertWarga(Kota *K, infotype namaWarga, int index) {
+
     Warga *P = (Warga *)malloc(sizeof(Warga));
-    if (P == NULL) {
-        printf("Alokasi Gagal!\nError Code: FAIL_ALLOC\n");
+    if (namaWarga == NULL) {
+        printf("Nama tidak boleh NULL!\n");
+        return;
+    }
+
+    P->nm = (char *)malloc(strlen(namaWarga) + 1);
+
+    if (P->nm == NULL) {
+        printf("alokasi memori gagal!");
+        free(P);
         exit(1);
     }
 
@@ -76,5 +93,27 @@ void deleteKota (Kota * K, int index) {
 		temp = temp->next;
 		free(hapus);
 	}
-	printf("Kode Berhasil dihapus!\n");
+    K[index].next = NULL;
+    free(K[index].kt);
+    K[index].kt = NULL;
+    printf("Kota dan semua warganya berhasil dihapus!\n");
 }
+
+void printAllKota(Kota *K) {
+    for (int x = 0; x < 5; x++) {
+        if (K[x].kt == NULL || strlen(K[x].kt) == 0) {
+            printf("Kota ke-%d: (Belum diinisialisasi)\n", x+1);
+            continue;
+        }
+
+        printf("Kota: %s\n", K[x].kt);
+        Warga* temp = K[x].next;
+        int nomor = 1;
+        while (temp != NULL) {
+            printf("  %d. %s\n", nomor++, temp->nm);
+            temp = temp->next;
+        }
+        printf("\n");
+    }
+}
+
